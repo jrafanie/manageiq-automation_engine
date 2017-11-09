@@ -19,6 +19,8 @@ describe "Current failures" do
     STDERR.puts "Gem.ruby \#{Gem.ruby}"
     STDERR.puts "LOAD_PATH: \#{$LOAD_PATH.inspect}"
 
+    STDERR.puts "GEM VERSION \#{Gem::VERSION}""
+
 gem 'concurrent-ruby'
     $:.unshift("#{Gem.loaded_specs['activesupport'].full_gem_path}/lib")
 STDERR.puts "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
