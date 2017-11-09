@@ -11,6 +11,7 @@ env:
 addons:
   postgresql: '9.4'
 install: bin/setup
+script: bundle exec rspec ${TRAVIS_BUILD_DIR}/spec/simple_spec.rb ${TRAVIS_BUILD_DIR}/spec/service_models/miq_ae_service_service_spec.rb
 after_script: bundle exec codeclimate-test-reporter
 notifications:
   webhooks:
