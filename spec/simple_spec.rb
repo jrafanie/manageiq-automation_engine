@@ -11,13 +11,13 @@ describe "Current failures" do
 
   def the_script
     <<-SCRIPT
-    # STDERR.puts ENV.inspect
+    STDERR.puts ENV.inspect
 
     require 'date'
     require 'rubygems'
 
-    STDERR.puts "Gem.ruby #{Gem.ruby}"
-    # STDERR.puts "LOAD_PATH: #{$LOAD_PATH.inspect}"
+    STDERR.puts "Gem.ruby \#{Gem.ruby}"
+    # STDERR.puts "LOAD_PATH: \#{$LOAD_PATH.inspect}"
 
 require 'concurrent'
     $:.unshift("#{Gem.loaded_specs['activesupport'].full_gem_path}/lib")
