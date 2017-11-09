@@ -11,7 +11,7 @@ describe "Current failures" do
 
   def the_script
     <<-SCRIPT
-    STDERR.puts ENV.inspect
+    # STDERR.puts ENV.inspect
 
     require 'date'
     require 'rubygems'
