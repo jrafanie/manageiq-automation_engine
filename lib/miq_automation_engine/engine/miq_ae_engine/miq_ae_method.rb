@@ -127,7 +127,7 @@ module MiqAeEngine
       ActiveRecord::Base.connection_pool.release_connection
       Bundler.with_clean_env do
         ActiveSupport::Dependencies.interlock.permit_concurrent_loads do
-          run_method(Gem.ruby) do |stdin|
+          run_method(Gem.ruby.to_s + " -d") do |stdin|
             stdin.puts(code)
           end
         end
