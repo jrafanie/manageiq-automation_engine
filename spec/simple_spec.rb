@@ -19,8 +19,9 @@ describe "Current failures" do
     STDERR.puts "Gem.ruby \#{Gem.ruby}"
     STDERR.puts "LOAD_PATH: \#{$LOAD_PATH.inspect}"
 
-require 'concurrent'
+gem 'concurrent-ruby'
     $:.unshift("#{Gem.loaded_specs['activesupport'].full_gem_path}/lib")
+STDERR.puts "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     require 'active_support/all'
     require 'socket'
     Socket.do_not_reverse_lookup = true  # turn off reverse DNS resolution
