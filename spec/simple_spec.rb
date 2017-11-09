@@ -17,7 +17,7 @@ describe "Current failures" do
     require 'rubygems'
 
     STDERR.puts "Gem.ruby \#{Gem.ruby}"
-    # STDERR.puts "LOAD_PATH: \#{$LOAD_PATH.inspect}"
+    STDERR.puts "LOAD_PATH: \#{$LOAD_PATH.inspect}"
 
 require 'concurrent'
     $:.unshift("#{Gem.loaded_specs['activesupport'].full_gem_path}/lib")
