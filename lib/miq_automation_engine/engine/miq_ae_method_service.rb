@@ -1,5 +1,9 @@
 module MiqAeMethodService
   def self.const_missing(name)
+$miq_ae_logger.info("XXX #{__method__} 1 name: #{name.inspect}")
+$miq_ae_logger.info("XXX #{__method__} 2a defined?(MiqAeMethodService): #{defined?(MiqAeMethodService).inspect}")
+$miq_ae_logger.info("XXX #{__method__} 2b defined?(MiqAeServiceModelBase): #{defined?(MiqAeServiceModelBase).inspect}")
+
     return super if !defined?(MiqAeMethodService) && name == :MiqAeMethodService
 
     horrible_list = [
@@ -19,8 +23,10 @@ module MiqAeMethodService
     end
 
     if MiqAeServiceModelBase.respond_to?(:create_service_model_from_name)
+      $miq_ae_logger.info("XXX #{__method__} 3a calling create_service_model_from_name #{name}")
       MiqAeServiceModelBase.create_service_model_from_name(name)
     else
+      $miq_ae_logger.info("XXX #{__method__} 3b calling super #{name}")
       super
     end
   end

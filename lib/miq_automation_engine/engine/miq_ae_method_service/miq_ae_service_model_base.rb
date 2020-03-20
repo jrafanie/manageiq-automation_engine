@@ -114,6 +114,7 @@ module MiqAeMethodService
     end
 
     def self.create_service_model_from_name(name)
+$miq_ae_logger.info("XXX #{__method__} 10 name: #{name}")
       backing_model = service_model_name_to_model(name)
 
       create_service_model(backing_model) if ar_model?(backing_model)
@@ -156,7 +157,7 @@ module MiqAeMethodService
       ar_model_name = /MiqAeService(.+)$/.match(service_model_name)
       return if ar_model_name.nil?
 
-      ar_model_name[1].gsub(/_/, '::').safe_constantize
+      ar_model_name[1].gsub(/_/, '::').tap {|i| $miq_ae_logger.info("XXX #{__method__} 11 ar_model_name: #{i}")}.safe_constantize
     end
 
     def self.model_to_service_model_name(ar_model)

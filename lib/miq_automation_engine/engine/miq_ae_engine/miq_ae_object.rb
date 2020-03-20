@@ -495,12 +495,19 @@ module MiqAeEngine
       return value.gsub(/[\[\]]/, '').strip.split(/\s*,\s*/) if datatype == 'array' && value.class == String
       return decrypt_password(value) if datatype == 'password'
 
+$miq_ae_logger.info("XXX: #{__method__} 1 #{SM_LOOKUP[datatype].inspect}")
       if (service_model = "MiqAeMethodService::MiqAeService#{SM_LOOKUP[datatype]}".safe_constantize)
+$miq_ae_logger.info("XXX: #{__method__} 1a: returning result of find")
         return service_model.find(value)
       end
 
-      raise MiqAeException::InvalidClass unless MiqAeField.available_datatypes.include?(datatype)
+$miq_ae_logger.info("XXX: #{__method__} 2: datetype: #{datatype.inspect}")
+      unless MiqAeField.available_datatypes.include?(datatype)
+        $miq_ae_logger.info("XXX: #{__method__} 2a datetype: #{datatype.inspect} is not in list: #{MiqAeField.available_datatypes.inspect}")
+        raise MiqAeException::InvalidClass
+      end
 
+$miq_ae_logger.info("XXX: #{__method__} 3: returning value: #{value.inspect}")
       # default datatype => 'string'
       value
     end
