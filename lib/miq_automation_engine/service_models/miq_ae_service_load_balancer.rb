@@ -1,8 +1,8 @@
 module MiqAeMethodService
   class MiqAeServiceLoadBalancer < MiqAeServiceModelBase
-    require_relative "mixins/miq_ae_service_retirement_mixin"
+    require_dependency "service_models/mixins/miq_ae_service_retirement_mixin"
     include MiqAeServiceRetirementMixin
-    require_relative "mixins/miq_ae_service_remove_from_vmdb_mixin"
+    require_dependency "service_models/mixins/miq_ae_service_remove_from_vmdb_mixin"
     include MiqAeServiceRemoveFromVmdb
 
     expose :ems_ref

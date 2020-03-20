@@ -1,6 +1,6 @@
 module MiqAeMethodService
   class MiqAeServiceVm < MiqAeServiceVmOrTemplate
-    require_relative "mixins/miq_ae_external_url_mixin"
+    require_dependency "service_models/mixins/miq_ae_external_url_mixin"
     include MiqAeExternalUrlMixin
 
     def remote_console_url=(url)

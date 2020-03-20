@@ -1,14 +1,14 @@
 module MiqAeMethodService
   class MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-    require_relative "mixins/miq_ae_service_ems_operations_mixin"
+    require_dependency "service_models/mixins/miq_ae_service_ems_operations_mixin"
     include MiqAeServiceEmsOperationsMixin
-    require_relative "mixins/miq_ae_service_retirement_mixin"
+    require_dependency "service_models/mixins/miq_ae_service_retirement_mixin"
     include MiqAeServiceRetirementMixin
-    require_relative "mixins/miq_ae_service_inflector_mixin"
+    require_dependency "service_models/mixins/miq_ae_service_inflector_mixin"
     include MiqAeServiceInflectorMixin
-    require_relative "mixins/miq_ae_service_custom_attribute_mixin"
+    require_dependency "service_models/mixins/miq_ae_service_custom_attribute_mixin"
     include MiqAeServiceCustomAttributeMixin
-    require_relative "mixins/miq_ae_service_remove_from_vmdb_mixin"
+    require_dependency "service_models/mixins/miq_ae_service_remove_from_vmdb_mixin"
     include MiqAeServiceRemoveFromVmdb
 
     expose :ems_folder,            :association => true, :method => :parent_folder

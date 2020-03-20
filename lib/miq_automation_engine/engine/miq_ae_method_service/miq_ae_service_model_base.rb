@@ -1,5 +1,5 @@
-require_relative 'miq_ae_service_object_common'
-require_relative 'miq_ae_service_rbac'
+require_dependency 'miq_ae_method_service/miq_ae_service_object_common'
+require_dependency 'miq_ae_method_service/miq_ae_service_rbac'
 module MiqAeMethodService
   class MiqAeServiceModelBase
     SERVICE_MODEL_PATH = ManageIQ::AutomationEngine::Engine.root.join("lib", "miq_automation_engine", "service_models")
@@ -114,16 +114,18 @@ module MiqAeMethodService
     end
 
     def self.create_service_model_from_name(name)
-$miq_ae_logger.info("XXX #{__method__} 10 name: #{name}")
+$miq_ae_logger.info("XXX #{__method__} 1: name: #{name}")
       backing_model = service_model_name_to_model(name)
+$miq_ae_logger.info("XXX #{__method__} 2: ar_model?(backing_model): #{ar_model?(backing_model).inspect}")
 
       create_service_model(backing_model) if ar_model?(backing_model)
     end
 
     def self.create_service_model(ar_model)
-      file_path = model_to_file_path(ar_model)
+      file_path = model_to_file_name(ar_model)
       if File.exist?(file_path)
-        require file_path
+        relative_path = File.basename(model_to_file_path(ar_model))
+        require_dependency(relative_path)
         model_name_from_active_record_model(ar_model).safe_constantize
       else
         dynamic_service_model_creation(ar_model, service_model_superclass(ar_model))

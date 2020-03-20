@@ -1,4 +1,4 @@
-require_relative 'miq_ae_state_info'
+require_dependency 'miq_ae_engine/miq_ae_state_info'
 module MiqAeEngine
   class MiqAeWorkspaceRuntime
     attr_accessor :graph, :class_methods, :invoker

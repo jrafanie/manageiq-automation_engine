@@ -1,7 +1,7 @@
 module MiqAeMethodService
   class MiqAeServiceManageIQ_Providers_Vmware_InfraManager_HostEsx < MiqAeServiceManageIQ_Providers_Vmware_InfraManager_Host
     include MiqAeServiceEmsOperationsMixin
-    require_relative "mixins/miq_ae_service_retirement_mixin"
+    require_dependency "service_models/mixins/miq_ae_service_retirement_mixin"
     def shutdown(force = false)
       sync_or_async_ems_operation(false, "vim_shutdown", [force])
       true

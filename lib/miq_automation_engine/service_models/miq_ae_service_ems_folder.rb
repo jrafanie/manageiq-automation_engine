@@ -1,6 +1,6 @@
 module MiqAeMethodService
   class MiqAeServiceEmsFolder < MiqAeServiceModelBase
-    require_relative "mixins/miq_ae_service_ems_operations_mixin"
+    require_dependency "service_models/mixins/miq_ae_service_ems_operations_mixin"
     include MiqAeServiceEmsOperationsMixin
 
     expose :folders, :association => true

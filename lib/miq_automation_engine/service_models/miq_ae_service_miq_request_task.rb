@@ -1,6 +1,6 @@
 module MiqAeMethodService
   class MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-    require_relative "mixins/miq_ae_service_miq_request_mixin"
+    require_dependency "service_models/mixins/miq_ae_service_miq_request_mixin"
     include MiqAeServiceMiqRequestMixin
 
     expose :execute, :method => :execute_queue, :override_return => true

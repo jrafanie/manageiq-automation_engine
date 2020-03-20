@@ -1,8 +1,8 @@
 module MiqAeMethodService
   class MiqAeServiceUser < MiqAeServiceModelBase
-    require_relative "mixins/miq_ae_service_custom_attribute_mixin"
+    require_dependency "service_models/mixins/miq_ae_service_custom_attribute_mixin"
     include MiqAeServiceCustomAttributeMixin
-    require_relative "mixins/miq_ae_external_url_mixin"
+    require_dependency "service_models/mixins/miq_ae_external_url_mixin"
     include MiqAeExternalUrlMixin
 
     expose :current_tenant, :association => true

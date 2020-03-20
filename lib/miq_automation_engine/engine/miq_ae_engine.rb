@@ -1,7 +1,7 @@
 require 'uri'
 
 Dir.glob(Pathname.new(__dir__).join("miq_ae_engine/*.rb")) do |file|
-  require_relative "miq_ae_engine/#{File.basename(file)}"
+  require_dependency "miq_ae_engine/#{File.basename(file)}"
 end
 
 module MiqAeEngine

@@ -1,12 +1,12 @@
 module MiqAeMethodService
   class MiqAeServiceService < MiqAeServiceModelBase
-    require_relative "mixins/miq_ae_service_retirement_mixin"
+    require_dependency "service_models/mixins/miq_ae_service_retirement_mixin"
     include MiqAeServiceRetirementMixin
-    require_relative "mixins/miq_ae_service_custom_attribute_mixin"
+    require_dependency "service_models/mixins/miq_ae_service_custom_attribute_mixin"
     include MiqAeServiceCustomAttributeMixin
-    require_relative "mixins/miq_ae_service_remove_from_vmdb_mixin"
+    require_dependency "service_models/mixins/miq_ae_service_remove_from_vmdb_mixin"
     include MiqAeServiceRemoveFromVmdb
-    require_relative "mixins/miq_ae_external_url_mixin"
+    require_dependency "service_models/mixins/miq_ae_external_url_mixin"
     include MiqAeExternalUrlMixin
 
     expose :automate_retirement_entrypoint

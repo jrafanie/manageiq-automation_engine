@@ -1,5 +1,5 @@
 require 'more_core_extensions/core_ext/array/math'
-require_relative 'miq_ae_state_machine'
+require_dependency 'miq_ae_engine/miq_ae_state_machine'
 module MiqAeEngine
   class MiqAeObject
     include MiqAeStateMachine
